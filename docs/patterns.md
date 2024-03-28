@@ -10,9 +10,15 @@ This document describes the reliability patterns that are used in the design of 
 
 The circuit breaker pattern is used to prevent a service from repeatedly trying to execute an operation that is likely to fail. If the operation is likely to fail, the circuit breaker opens and the operation is not attempted until the circuit breaker closes again. This pattern is used to prevent the system from becoming overwhelmed by repeated failures.
 
+![Circuit Breaker Flowchart](./images/Circuit-breaker-flowchart.png) 
+![Circuit Breaker Flowchart](./images/Circuit-breaker-seq.png) 
+
+
 ### Retry
 
 The retry pattern is used to automatically retry an operation that has failed. This pattern is used to improve the reliability of the system by automatically retrying operations that have failed due to transient faults.
+
+![Timeout Sequence Diagram](./images/Timeout-seq.png) 
 
 ### Timeout
 

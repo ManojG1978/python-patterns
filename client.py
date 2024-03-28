@@ -6,7 +6,7 @@ from color_print import print_info, print_warning, print_error, print_event
 
 TIMEOUT = 10   # Timeout in seconds
 FAIL_MAX = 2    # Maximum number of failures before the circuit opens
-REQUEST_TIMEOUT = 1  # Timeout for the HTTP request
+REQUEST_TIMEOUT = 3  # Timeout for the HTTP request
 
 
 # Custom listener for circuit breaker state changes with open duration tracking
@@ -55,7 +55,7 @@ def before_sleep(retry_state):
 #        wait=wait_fixed(3),
 #        after=after_retry,
 #        before_sleep=before_sleep)
-# @circuit_breaker_decorator
+@circuit_breaker_decorator
 def make_request_with_retry():
     response = requests.get("http://127.0.0.1:5000/", timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
