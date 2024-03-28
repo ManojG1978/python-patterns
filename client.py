@@ -2,41 +2,11 @@ import requests
 import pybreaker
 from tenacity import retry, stop_after_attempt, wait_fixed
 import time
+from color_print import print_info, print_warning, print_error, print_event
 
 TIMEOUT = 10   # Timeout in seconds
 FAIL_MAX = 2    # Maximum number of failures before the circuit opens
 REQUEST_TIMEOUT = 1  # Timeout for the HTTP request
-
-class Colors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-
-def print_info(message):
-    print(f"{Colors.OKCYAN}{message}{Colors.ENDC}")
-
-
-def print_warning(message):
-    print(f"{Colors.WARNING}{message}{Colors.ENDC}")
-
-
-def print_error(message):
-    print(f"{Colors.FAIL}{message}{Colors.ENDC}")
-
-
-def print_event(message):
-    print(f"{Colors.OKCYAN}{message}{Colors.OKCYAN}")
-
-
-def print_success(message):
-    print(f"{Colors.OKGREEN}{message}{Colors.OKGREEN}")
 
 
 # Custom listener for circuit breaker state changes with open duration tracking
